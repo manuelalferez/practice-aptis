@@ -1,0 +1,28 @@
+.Grammar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.Option{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+
+input[type='radio'] {
+    -webkit-appearance:none;
+    width:40px;
+    height:40px;
+    background:white;
+    border-radius: 50%;
+    border: 2px solid #555;
+    outline: none;
+    margin-right: 10px;
+}
+input[type='radio']:checked {
+    background: #555;
+}

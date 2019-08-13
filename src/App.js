@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Grammar from "./components/Grammar/Grammar";
+import Vocabulary from "./components/Vocabulary/Vocabulary";
+/* import GA from "./GoogleAnalytics"; */
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+{/*       {GA.init() && <GA.RouteTracker />} */}
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/grammar" component={Grammar} />
+            <Route exact path="/vocabulary" component={Vocabulary} />
+           {/*  <Route exact path="/blog/post/:id" component={Post} /> */}
+            <Route component={PageNotFound} />
+          </Switch>
+    </BrowserRouter>
   );
 }
 

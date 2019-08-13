@@ -1,0 +1,31 @@
+.Home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../../images/backgroud.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;   
+}
+
+.Home__button{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin: 20px;
+    height: 100px;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.37);
+    border: 4px solid #56555A;
+    outline: none;
+}
+
+.Home__button:hover{
+    cursor: pointer;
+    background: black;
+    color: white;
+    border-color: black;
+}
