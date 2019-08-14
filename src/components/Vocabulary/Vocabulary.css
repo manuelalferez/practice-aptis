@@ -105,6 +105,11 @@
 @media (max-width: 768px) {
   .Vocabulary__question {
     font-size: 20px;
+    height: 90px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .Vocabulary__options select {
     font-size: 15px;
