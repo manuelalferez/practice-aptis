@@ -1,0 +1,87 @@
+.Vocabulary{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+.Vocabulary__question{
+    font-size: 50px;
+}
+
+.Wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Vocabulary__options select{
+    margin-left: 20px;
+    height: 70px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    outline:0;
+}
+
+/* .Option__correct{
+    height: 40px;
+    height: 40px;
+    margin-left: 10px;
+} */
+
+.Answer{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.Answer img{
+    height: 50px;
+    width: 50px;
+    margin-right: 20px;
+}
+
+.Answer__option{
+    color: blue;
+}
+
+.Hidden{
+    display: none;
+}
+
+.Vocabulary__buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.Vocabulary__button{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin: 20px;
+    height: 50px;
+    width: 150px;
+    background: rgba(255, 255, 255, 0.37);
+    border: 4px solid #56555A;
+    outline: none;
+}
+
+.Vocabulary__button:hover{
+    cursor: pointer;
+    background: black;
+    color: white;
+    border-color: black;
+}
+
+.Button__correct:hover{
+    background: green;
+    border: green;
+}
