@@ -28,6 +28,11 @@ const data = [
         question: 'pick',
         options: ['slight','learn','obtain','start','communicate','choose'],
         answer: '5'
+    },
+    {
+        question: 'to discover or perceive after consideration is to ',
+        options: ['find','boost','increase','gather','assemble'],
+        answer: '0'
     }
 ]
 
