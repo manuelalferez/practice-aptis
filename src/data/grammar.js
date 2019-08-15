@@ -152,7 +152,7 @@ const data = [
   {
     question: "We  ____  have caught the early train, as the football match was delayed.",
     options: ["didn´t", "needn´t", "mustn´t"],
-    answer: "1"
+    answer: "2"
   },
   {
     question: "I just heard they are  ____  get married in June.",
@@ -215,9 +215,9 @@ const data = [
     answer: "2"
   },
   {
-    question: "We could cook dinner.  ____,  we could buy some take away food.",
+    question: "We could cook dinner.  ____ ,  we could buy some take away food.",
     options: ["Although", "On the other hand", "Therefore"],
-    answer: "1"
+    answer: "0"
   },
   {
     question: "I wish it  ____  the time of year when I could go on holiday.",

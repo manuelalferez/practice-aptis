@@ -79,6 +79,11 @@ input[type="radio"]:checked {
 @media (max-width: 768px) {
   .Grammar__question {
     font-size: 20px;
+    height: 60px;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .Option {
     display: flex;

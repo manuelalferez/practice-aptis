@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import "./Grammar.css";
 import data from "../../data/grammar";
-import correct_IMG from '../../images/correct.png';
+import correct_IMG from "../../images/correct.png";
+import Puntuation from "../Puntuation/Puntuation";
 
 class Grammar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selection: null,
-      exercise_id: Math.floor((Math.random() * data.length)),
-      checked: [false, false, false]
+      exercise_id: Math.floor(Math.random() * data.length),
+      checked: [false, false, false],
+      well: 0,
+      wrong: 0,
+      was_corrected: false
     };
     this.clicked = this.clicked.bind(this);
     this.correct = this.correct.bind(this);
@@ -17,17 +21,17 @@ class Grammar extends Component {
     this.random = this.random.bind(this);
   }
 
-  random(){
-    let random_id='';
-    do{
-      random_id = Math.floor((Math.random() * data.length)) ;
-    }while(random_id===this.state.exercise_id);
-    console.log(`Random: ${random_id}`);
+  random() {
+    let random_id = "";
+    do {
+      random_id = Math.floor(Math.random() * data.length);
+    } while (random_id === this.state.exercise_id);
+
     return random_id;
   }
 
   clicked(e) {
-    let new_checked = [false, false, false]; 
+    let new_checked = [false, false, false];
     new_checked[e.target.name] = true;
     this.setState({
       selection: e.target.value,
@@ -36,33 +40,56 @@ class Grammar extends Component {
   }
 
   correct() {
-    let img_HTML = document.getElementsByClassName('Option__correct')[data[this.state.exercise_id].answer];
-    img_HTML.classList.remove('Hidden');
+    let img_HTML = document.getElementsByClassName("Option__correct")[
+      data[this.state.exercise_id].answer
+    ];
+    img_HTML.classList.remove("Hidden");
+
+    if (!this.state.was_corrected) {
+      if (this.state.selection === data[this.state.exercise_id].answer) {
+        this.setState(prevState => ({
+          well: prevState.well + 1
+        }));
+      } else {
+        this.setState(prevState => ({
+          wrong: prevState.wrong + 1
+        }));
+      }
+      this.setState({
+        was_corrected: true
+      });
+    }
   }
 
-
   next() {
-    let random_exercise = this.random()
+    let random_exercise = this.random();
     this.setState({
       exercise_id: random_exercise
     });
 
     // Deselect the checked box
-    let checked_clear = [false, false, false]; 
+    let checked_clear = [false, false, false];
     this.setState({
       checked: checked_clear
     });
-    let img_HTML = document.getElementsByClassName('Option__correct');
-    for(let i=0; i< img_HTML.length; i++){
-      img_HTML[i].classList.add('Hidden');
+    let img_HTML = document.getElementsByClassName("Option__correct");
+    for (let i = 0; i < img_HTML.length; i++) {
+      img_HTML[i].classList.add("Hidden");
     }
+
+    this.setState({
+      was_corrected: false
+    });
   }
 
   render() {
     let i = 0;
     return (
       <div className="Grammar">
-        <h1 className="Grammar__question">{data[this.state.exercise_id].question}</h1>
+        <Puntuation well={this.state.well} wrong={this.state.wrong} />
+        <h1 className="Grammar__question">
+          {data[this.state.exercise_id].question}
+        </h1>
         <div className="Grammar__options">
           {data[this.state.exercise_id].options.map(option => (
             <div className="Option" key={i}>
@@ -72,16 +99,27 @@ class Grammar extends Component {
                 value={i}
                 checked={this.state.checked[i++]}
                 onChange={this.clicked}
-                id='input'
+                id="input"
               />
               <p>{option}</p>
-              <img src={correct_IMG} alt='Option is well' className='Option__correct Hidden'/>
+              <img
+                src={correct_IMG}
+                alt="Option is well"
+                className="Option__correct Hidden"
+              />
             </div>
           ))}
         </div>
-        <div className='Grammar__buttons'>
-          <button className='Button__correct Grammar__button' onClick={this.correct}>Correct</button>
-          <button className='Grammar__button' onClick={this.next}>Next</button>
+        <div className="Grammar__buttons">
+          <button
+            className="Button__correct Grammar__button"
+            onClick={this.correct}
+          >
+            Correct
+          </button>
+          <button className="Grammar__button" onClick={this.next}>
+            Next
+          </button>
         </div>
       </div>
     );

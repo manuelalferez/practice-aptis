@@ -3,13 +3,17 @@ import "./Vocabulary.css";
 import data from "../../data/vocabulary";
 import happy_IMG from "../../images/happy.png";
 import sad_IMG from "../../images/sad.png";
+import Puntuation from "../Puntuation/Puntuation";
 
 class Vocabulary extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selection: "0",
-      exercise_id: Math.floor(Math.random() * data.length)
+      exercise_id: Math.floor(Math.random() * data.length),
+      well: 0,
+      wrong: 0,
+      was_corrected: false
     };
     this.clicked = this.clicked.bind(this);
     this.correct = this.correct.bind(this);
@@ -36,6 +40,21 @@ class Vocabulary extends Component {
   correct() {
     let answer = document.getElementsByClassName("Answer")[0];
     answer.classList.remove("Hidden");
+
+    if (!this.state.was_corrected) {
+      if (this.state.selection === data[this.state.exercise_id].answer) {
+        this.setState(prevState => ({
+          well: prevState.well + 1
+        }));
+      } else {
+        this.setState(prevState => ({
+          wrong: prevState.wrong + 1
+        }));
+      }
+      this.setState({
+        was_corrected: true
+      });
+    }
   }
 
   answer() {
@@ -74,12 +93,17 @@ class Vocabulary extends Component {
 
     let answer = document.getElementsByClassName("Answer")[0];
     answer.classList.add("Hidden");
+
+    this.setState({
+      was_corrected: false
+    });
   }
 
   render() {
     let i = 0;
     return (
       <div className="Vocabulary">
+        <Puntuation well={this.state.well} wrong={this.state.wrong}/>
         <div className="Wrapper">
           <h1 className="Vocabulary__question">
             {data[this.state.exercise_id].question}
