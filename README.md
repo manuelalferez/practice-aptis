@@ -13,7 +13,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://practice-aptis.firebaseapp.com">
+    <a href="https://practice-aptis.now.sh">
       Website
     </a>
   </h3>
